@@ -28,6 +28,7 @@ public class Grafo {
 		Queue<String> researchList = new LinkedList<>(nodes.get("You"));
 		
 		List<String> mangoSellers = new ArrayList<>();
+		List<String> peopleVerified = new ArrayList<>();
 		
 		
 		while (!researchList.isEmpty()){
@@ -40,6 +41,8 @@ public class Grafo {
 			else {
 				researchList.addAll(nodes.get(person));
 			}
+			
+			peopleVerified.add(person); // avoids a loop and unnecessary searches
 		}
 		
 		System.out.println(mangoSellers);
