@@ -23,13 +23,12 @@ public class Grafo {
 		nodes.put("Alice", new ArrayList<>(Arrays.asList("Claire")));
 		nodes.put("Bob", new ArrayList<>());
 		nodes.put("Claire", new ArrayList<>(Arrays.asList("Tom")));
-		nodes.put("Tom", new ArrayList<>());
-		
-		Queue<String> researchList = new LinkedList<>(nodes.get("You"));
+		nodes.put("Tom", new ArrayList<>(Arrays.asList("You")));
 		
 		List<String> mangoSellers = new ArrayList<>();
 		List<String> peopleVerified = new ArrayList<>();
 		
+		Queue<String> researchList = new LinkedList<>(nodes.get("You"));
 		
 		while (!researchList.isEmpty()){
 			String person = researchList.poll();
@@ -38,7 +37,7 @@ public class Grafo {
 				mangoSellers.add(person);
 			}
 			
-			else {
+			if(!peopleVerified.contains(person)) {
 				researchList.addAll(nodes.get(person));
 			}
 			
